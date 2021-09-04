@@ -22,7 +22,7 @@ categoriesRoutes.post("/", (request, response) => {
 categoriesRoutes.get("/", (request, response) => {
     const all = categoriesRepository.list()
 
-    return response.status(201).json(all)
+    //return response.status(201).json(all)
 })
 
 export { categoriesRoutes };
