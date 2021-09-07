@@ -1,27 +1,30 @@
-import { request, Router } from "express";
-import { CategoriesRepository } from "../repositories/CategoriesRepository.";
-
-
+import { Router } from "express";
+import multer from "multer";
+import { createCategoryController } from "../modules/cars/usesCases/createCategory";
+import { listCategoriesController } from "../modules/cars/usesCases/listCategories";
+ 
 const categoriesRoutes = Router()
-const categoriesRepository = new CategoriesRepository()
+
+const upload = multer({ dest: "./tmp" })
 
 categoriesRoutes.post("/", (request, response) => {
-    const { name, description } = request.body;
-
-    const categoryAlreadyExists = categoriesRepository.findByName(name);
-
-    if (categoryAlreadyExists) {
-        return response.status(400).json({ error: "Already exist this category" })
-    }
-
-    categoriesRepository.create({name, description})
-    
-    return response.status(201).send()
-})
+    return createCategoryController.handle(request, response);
+} )
 
 categoriesRoutes.get("/", (request, response) => {
-    const all = categoriesRepository.list()
-    return response.status(201).json(all)
+    return listCategoriesController.handle(request, response);
+})
+
+categoriesRoutes.post("/import", upload.single("file") ,(request, response) => {
+    const { file } = request;
+    console.log(file);
+    return response.send();
 })
 
 export { categoriesRoutes };
+
+
+/**
+ * SRP - rota
+ * receber a requisição, processa e retorna 
+ */
