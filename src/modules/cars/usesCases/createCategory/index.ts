@@ -6,6 +6,8 @@ const categoryRepository = CategoriesRepository.getInstance();
 
 const createCategoryUseCase = new CreateCategoryUseCase(categoryRepository);
 
-const createCategoryController = new CreateCategoryController(createCategoryUseCase);
+const createCategoryController = new CreateCategoryController(
+  createCategoryUseCase
+);
 
-export { createCategoryController }   
+export { createCategoryController };
