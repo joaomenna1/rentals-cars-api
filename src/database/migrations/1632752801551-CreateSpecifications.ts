@@ -9,8 +9,8 @@ export class CreateSpecifications1632752801551 implements MigrationInterface {
           {
             name: "id",
             type: "uuid",
+            isPrimary: true,
             generationStrategy: "uuid",
-            default: "uuid_generate_v4()",
           },
           {
             name: "name",

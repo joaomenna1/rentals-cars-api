@@ -3,7 +3,7 @@ interface ICreateUserDTO {
   username: string;
   password: string;
   email: string;
-  driver_licenses: string;
+  driver_license: string;
 }
 
 export { ICreateUserDTO };

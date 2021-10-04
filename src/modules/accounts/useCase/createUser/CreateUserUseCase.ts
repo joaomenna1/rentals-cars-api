@@ -6,23 +6,23 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 @injectable()
 class CreateUserUseCase {
   constructor(
-    @inject("UsersRepository")
+    @inject("UserRepository")
     private usersRepository: IUsersRepository
   ) {}
 
   async execute({
     name,
     username,
-    email,
     password,
-    driver_licenses,
+    email,
+    driver_license,
   }: ICreateUserDTO): Promise<void> {
     await this.usersRepository.create({
       name,
       username,
       password,
       email,
-      driver_licenses,
+      driver_license,
     });
   }
 }
