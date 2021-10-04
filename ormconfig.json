@@ -14,6 +14,6 @@
       "./src/modules/**/entities/*.ts"
     ],
     "migrations": [
-       "./src/database/migration/*.ts"
+       "./src/database/migrations/*.ts"
     ]
  }
